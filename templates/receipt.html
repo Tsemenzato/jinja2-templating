@@ -1,67 +1,89 @@
 {% set missing %}
-<span style="color:red">missing field</span>
+ <span style="color:red">missing field</span>
 {% endset %}
 
-<div style="display: inline-flex; background-color: lightgray; font-family: Helvetica, sans-serif; padding: 5px; border-radius: 15px;">
-<table>
-  <tr>
-    <td><b>Total:</b> </td>
-    <td>{% if total is defined %}
-      <span>{{total}}</span>
-      {% else %}
-      {{ missing }}
-      {% endif %}</td>
-  </tr>
-  <tr>
-    <td>Merchant: </td>
-    <td>{% if merchant is defined and merchant|length %}
-      <span>{{merchant}}</span>
-      {% else %}
-      {{ missing }}
-      {% endif %}</td>
-  </tr>
-  <tr>
-    <td>Date: </td>
-    <td>{% if date is defined and date|length %}
-      <span>{{date}}</span>
-      {% else %}
-      {{ missing }}
-      {% endif %}</td>
-  </tr>
-  <tr>
-    <td>Location: </td>
-    <td>{% if location is defined and location|length %}
-      <span>{{location}}</span>
-      {% else %}
-      {{ missing }}
-      {% endif %}</td>
-  </tr>
-  <tr>
-    <td>Atendees: </td>
-    <td>{% if attendees_list is defined and attendees_list|length %}
-      {% for atendee in attendees_list %}
-        {{ atendee }}</br>
-      {% endfor %}
+{% set pStyle %}
+ style="display: inline-block; background-color: #ebebeb; font-family: Roboto, Helvetica, sans-serif; padding: 10px; border-radius: 15px; margin: 2px"
+{% endset %}
 
-    {% else %}
-      {{ missing }}
-    {% endif %}</td>
-  </tr>
-  <tr>
-    <td>Category</td>
-    <td>{% if category is defined and category|length %}
-      <span>{{category}}</span>
-      {% else %}
-      {{ missing }}
-      {% endif %}</td>
-  </tr>
-  <tr>
-    <td>Purpose</td>
-    <td>{% if purpose is defined and purpose|length %}
-      <span>{{purpose}}</span>
-      {% else %}
-      {{ missing }}
-      {% endif %}</td>
-  </tr>
-</table>
+{% set tdStyle %}
+style="padding: 10px;"
+{% endset %}
+<div style="display: inline-block">
+<p {{ pStyle }}>Hi! Thanks for sending me your receipt! Here's what i figured out so far:</p>
+<div style="display: block; font-family: Helvetica, sans-serif; padding: 5px; ">
+  <table style="color: #464747;  background-color: #ebebeb; border-radius: 15px;">
+    <tr>
+      <td {{ tdStyle }}><b>Total:</b> </td>
+      <td {{ tdStyle }}>
+        {% if total is defined %}
+          <span>{{total}}</span>
+        {% else %}
+          {{ missing }}
+        {% endif %}</td>
+    </tr>
+    <tr>
+      <td {{ tdStyle }}><b>Merchant: </b></td>
+      <td {{ tdStyle }}>
+        {% if merchant is defined and merchant|length %}
+          <span>{{merchant}}</span>
+        {% else %}
+          {{ missing }}
+        {% endif %}</td>
+    </tr>
+    <tr>
+      <td {{ tdStyle }}><b>Date: </b></td>
+      <td {{ tdStyle }}>
+        {% if date is defined and date|length %}
+          <span>{{date}}</span>
+        {% else %}
+          {{ missing }}
+        {% endif %}</td>
+    </tr>
+    <tr>
+      <td {{ tdStyle }}><b>Location: </b></td>
+      <td {{ tdStyle }}>
+        {% if location is defined and location|length %}
+          <span>{{location}}</span>
+        {% else %}
+          {{ missing }}
+        {% endif %}</td>
+    </tr>
+    <tr>
+      <td {{ tdStyle }}><b>Atendees: </b></td>
+      <td {{ tdStyle }}>
+        {% if attendees_list is defined and attendees_list|length %}
+          {% for atendee in attendees_list %}
+            {{ atendee }}</br>
+          {% endfor %}
+
+        {% else %}
+          {{ missing }}
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td {{ tdStyle }}><b>Category</b></td>
+      <td {{ tdStyle }}>
+        {% if category is defined and category|length %}
+          <span>{{category}}</span>
+        {% else %}
+          {{ missing }}
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td {{ tdStyle }}><b>Purpose</b></td>
+      <td {{ tdStyle }}>
+        {% if purpose is defined and purpose|length %}
+          <span>{{purpose}}</span>
+        {% else %}
+          {{ missing }}
+        {% endif %}
+      </td>
+    </tr>
+  </table>
+</div>
+<p {{ pStyle }}>You have $38.75 remaining of your $75 per diem remaining today.</p> <br/>
+<p {{ pStyle }}>You can ask me how much per diem remains for today at anymtime. <br/> Just send me an email with "per diem balance" in the subject or body.</p> <br/>
 </div>
