@@ -1,5 +1,67 @@
-Hello {{name}}!
+{% set missing %}
+<span style="color:red">missing field</span>
+{% endset %}
 
-{% if test -%}
-    How are you?
-{%- endif %}
+<div style="display: inline-flex; background-color: lightgray; font-family: Helvetica, sans-serif; padding: 5px; border-radius: 15px;">
+<table>
+  <tr>
+    <td><b>Total:</b> </td>
+    <td>{% if total is defined %}
+      <span>{{total}}</span>
+      {% else %}
+      {{ missing }}
+      {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Merchant: </td>
+    <td>{% if merchant is defined and merchant|length %}
+      <span>{{merchant}}</span>
+      {% else %}
+      {{ missing }}
+      {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Date: </td>
+    <td>{% if date is defined and date|length %}
+      <span>{{date}}</span>
+      {% else %}
+      {{ missing }}
+      {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Location: </td>
+    <td>{% if location is defined and location|length %}
+      <span>{{location}}</span>
+      {% else %}
+      {{ missing }}
+      {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Atendees: </td>
+    <td>{% if attendees_list is defined and attendees_list|length %}
+      {% for atendee in attendees_list %}
+        {{ atendee }}</br>
+      {% endfor %}
+
+    {% else %}
+      {{ missing }}
+    {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td>{% if category is defined and category|length %}
+      <span>{{category}}</span>
+      {% else %}
+      {{ missing }}
+      {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Purpose</td>
+    <td>{% if purpose is defined and purpose|length %}
+      <span>{{purpose}}</span>
+      {% else %}
+      {{ missing }}
+      {% endif %}</td>
+  </tr>
+</table>
+</div>
