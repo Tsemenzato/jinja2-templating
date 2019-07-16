@@ -11,9 +11,10 @@ output = template.render({
  "date": "June 23,2019",
  "merchant": "Momofuko Ko",
  "total": 560.75,
+ "date": "8:30 AM Wednesday, July 17 2017",
  "purpose": "",
- "attendees": "<missing data>",
- "attendees_list": ["atendee 1","atendee 2", "atendee 3"]
+ "location": "3617 Tully Street, Livonia, MI",
+ "attendees_list": ["John Doe","Jane Doe"]
 })
 
 with open('my_new_html_file.html', 'w') as f:
